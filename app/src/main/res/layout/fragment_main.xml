@@ -125,7 +125,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="false"
             android:layout_alignParentBottom="false"
-            android:layout_toEndOf="@+id/tv_Months"
             android:layout_below="@+id/btn_percentsMinus"
             android:layout_alignLeft="@+id/btn_percentsMinus"
             android:layout_alignStart="@+id/btn_percentsMinus"
