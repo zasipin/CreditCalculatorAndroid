@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Кредитный калькулятор</string>
-    <string name="credit_sum">Сумма кредита</string>
-    <string name="credit_percents">Проценты</string>
+    <string name="app_name">Loan Calculator</string>
+    <string name="credit_sum">Loan amount</string>
+    <string name="credit_percents">Interest rate per year</string>
     <string name="action_settings">Settings</string>
     <string name="step_minus">-</string>
     <string name="step_plus">+</string>
-    <string name="monthsCredit">Срок кредита</string>
-    <string name="months">Мес./лет</string>
-    <string name="monthlyPayment">Ежемес. платеж</string>
-    <string name="wholePayment">Всего оплата</string>
-    <string name="overpay">Сумма переплаты</string>
-    <string name="overpayPercents">Перепл. %</string>
-    <string name="recentYearDelta0">Разница с пред.</string>
-    <string name="recentYearDelta">годом, %</string>
+    <string name="monthsCredit">Loan terms</string>
+    <string name="months">Mon./yrs</string>
+    <string name="monthlyPayment">Monthly payment</string>
+    <string name="wholePayment">Total pay</string>
+    <string name="overpay">Sum overpay</string>
+    <string name="overpayPercents">Overpay %</string>
+    <string name="recentYearDelta0">Diff. with recent</string>
+    <string name="recentYearDelta">year, %</string>
 </resources>
