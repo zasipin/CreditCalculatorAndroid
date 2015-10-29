@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Loan Calculator</string>
+    <string name="credit_sum">Loan amount</string>
+    <string name="credit_percents">Interest rate per year</string>
+    <string name="action_settings">Settings</string>
+    <string name="step_minus">-</string>
+    <string name="step_plus">+</string>
+    <string name="monthsCredit">Loan terms</string>
+    <string name="months">Mon./yrs</string>
+    <string name="monthlyPayment">Monthly payment</string>
+    <string name="wholePayment">Total pay</string>
+    <string name="overpay">Sum overpay</string>
+    <string name="overpayPercents">Overpay %</string>
+    <string name="recentYearDelta0">Diff. with recent</string>
+    <string name="recentYearDelta">year, %</string>
+</resources>

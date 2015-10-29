@@ -23,8 +23,11 @@ import java.util.ArrayList;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-    int creditSum = 0;
-    float percentsSum = 0;
+    int creditSum = 100000;
+    float percentsSum = 10;
+
+    int SUM_INIT = 100000;
+    float PERCENTS_INIT = 10;
 
     SharedPreferences prefs;
 
@@ -321,7 +324,12 @@ public class MainActivityFragment extends Fragment {
         if(prefs != null) {
             percentsSum = prefs.getFloat(PERCENTS, 0f);
             creditSum = prefs.getInt(CREDIT_SUM, 0);
-            monthsCalculator.Recalculate(creditSum, percentsSum);
         }
+        else
+        {
+            percentsSum = PERCENTS_INIT;
+            creditSum = SUM_INIT;
+        }
+        monthsCalculator.Recalculate(creditSum, percentsSum);
     }
 }
