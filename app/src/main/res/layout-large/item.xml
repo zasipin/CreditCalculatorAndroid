@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:showDividers="middle" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textMonth"
+                    android:layout_column="0"
+                    android:autoText="false"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="left"
+                    android:text="120(10)"
+                    android:width="70dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Medium Text"
+                    android:id="@+id/textPayMonth"
+                    android:layout_column="1"
+                    android:textColor="@android:color/black"
+                    android:minWidth="90dp"
+                    android:gravity="right"
+                    android:paddingLeft="5dp"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_column="2"
+                    android:text="Medium Text"
+                    android:id="@+id/textOverpay"
+                    android:textColor="@android:color/black"
+                    android:minWidth="50dp"
+                    android:gravity="right"
+                    android:paddingLeft="5dp"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:layout_column="3"
+                    android:id="@+id/textView7"
+                    android:textColor="#FF007E66"
+                    android:minWidth="30dp"
+                    android:gravity="right"
+                    android:paddingLeft="10dp"
+                    android:width="75dp"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:measureWithLargestChild="false"
+                android:longClickable="false" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView6"
+                    android:layout_column="0"
+                    android:autoText="false"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="left"
+                    android:width="70dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:text="Medium Text"
+                    android:id="@+id/textPayTotal"
+                    android:layout_column="1"
+                    android:textColor="#FF007E66"
+                    android:minWidth="90dp"
+                    android:gravity="right"
+                    android:paddingLeft="5dp"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:text="Medium Text"
+                    android:layout_column="2"
+                    android:id="@+id/textOverpayPercent"
+                    android:textColor="#FF007E66"
+                    android:minWidth="50dp"
+                    android:gravity="right"
+                    android:width="90dp"
+                    android:paddingLeft="5dp"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:text="Medium Text"
+                    android:layout_column="3"
+                    android:id="@+id/textDeltaOverpay"
+                    android:textColor="#FF007E66"
+                    android:minWidth="30dp"
+                    android:gravity="right"
+                    android:paddingLeft="10dp"
+                    android:width="75dp"
+                    android:layout_weight="1" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+</LinearLayout>
