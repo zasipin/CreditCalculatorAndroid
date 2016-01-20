@@ -12,6 +12,6 @@
     <string name="wholePayment">Total pay</string>
     <string name="overpay">Sum overpay</string>
     <string name="overpayPercents">Overpay %</string>
-    <string name="recentYearDelta0">Diff. with recent</string>
+    <string name="recentYearDelta0">Diff. with prev.</string>
     <string name="recentYearDelta">year, %</string>
 </resources>
