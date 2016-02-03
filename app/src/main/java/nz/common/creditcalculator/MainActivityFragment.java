@@ -1,22 +1,18 @@
 package nz.common.creditcalculator;
 
-import android.app.ListFragment;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
-import java.util.ArrayList;
 
 
 /**
@@ -267,11 +263,11 @@ public class MainActivityFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int currentSum = 0;
+                float currentValue = 0;
                 try {
-                    currentSum = Integer.parseInt(s.toString());
-                    if (currentSum > 0) {
-                        updateFromPercents(currentSum);
+                    currentValue = Float.parseFloat(s.toString());
+                    if (currentValue > 0) {
+                        updateFromPercents(currentValue);
                     }
                 } catch (Exception ex) {
 
