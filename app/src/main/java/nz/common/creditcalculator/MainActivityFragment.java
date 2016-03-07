@@ -1,5 +1,7 @@
 package nz.common.creditcalculator;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -43,7 +46,7 @@ public class MainActivityFragment extends Fragment {
     int yearsByDefault = 30;
     MonthsCalculator monthsCalculator;
 
-    CalculatorListAdapter adapter;
+    CalculatorListAdapter mCalculatorListAdapter;
 
     public MainActivityFragment() {
         monthsCalculator = new MonthsCalculator(yearsByDefault);
@@ -77,11 +80,12 @@ public class MainActivityFragment extends Fragment {
             monthsCalculator.Recalculate(creditSum, percentsSum);
         }
         */
-        adapter = new CalculatorListAdapter(getActivity().getApplicationContext(),
+        mCalculatorListAdapter = new CalculatorListAdapter(getActivity().getApplicationContext(),
                 R.layout.item, monthsCalculator.GetCalcuatorsList().toArray(new Calculator[0]));
 
         ListView lv = (ListView)getActivity().findViewById(R.id.listViewItems);
-        lv.setAdapter(adapter);
+        lv.setAdapter(mCalculatorListAdapter);
+        this.setOnListItemClickListener(lv);
 
         // Populate list with our static array of titles.
         //setListAdapter(new CalculatorListAdapter(getActivity().getApplicationContext(),
@@ -280,14 +284,14 @@ public class MainActivityFragment extends Fragment {
     {
         creditSum = currentSum;
         monthsCalculator.Recalculate(creditSum, percentsSum);
-        adapter.notifyDataSetChanged();
+        mCalculatorListAdapter.notifyDataSetChanged();
     }
 
     private void updateFromPercents(float currentPercents)
     {
         percentsSum = currentPercents;
         monthsCalculator.Recalculate(creditSum, percentsSum);
-        adapter.notifyDataSetChanged();
+        mCalculatorListAdapter.notifyDataSetChanged();
     }
 
     private void restoreSavedInstance(Bundle savedInstanceState)
@@ -327,5 +331,20 @@ public class MainActivityFragment extends Fragment {
             creditSum = SUM_INIT;
         }
         monthsCalculator.Recalculate(creditSum, percentsSum);
+    }
+
+    private void setOnListItemClickListener(ListView lv)
+    {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Context context = getContext();
+                Calculator calculator = mCalculatorListAdapter.getItem(i);
+
+                Intent intent = new Intent(context, PaymentScheduleActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT, calculator.months);
+                startActivity(intent);
+            }
+        });
     }
 }
