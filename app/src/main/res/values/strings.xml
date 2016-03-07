@@ -13,4 +13,5 @@
     <string name="overpayPercents">Overpay %</string>
     <string name="recentYearDelta0">Diff. with prev.</string>
     <string name="recentYearDelta">year, %</string>
+    <string name="title_activity_payment_schedule">PaymentScheduleActivity</string>
 </resources>
