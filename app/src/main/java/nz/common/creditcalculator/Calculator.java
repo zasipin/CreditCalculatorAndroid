@@ -12,6 +12,7 @@ public class Calculator {
     double overpay = 0.0;
     double overpayPercentage = 0.0;
     double recentYearDifference = 0.0;
+    double creditAmount = 0.0;
     Calculator recentPeriod;
 
     public Calculator(int _months)
@@ -36,7 +37,7 @@ public class Calculator {
         } else {
             this.annuitetCoefficient = 1.0 / months;
         }
-
+        this.creditAmount = creditAmount;
         this.monthlyPay = creditAmount * this.annuitetCoefficient;
         this.totalPay = this.monthlyPay * this.months;
         this.overpay = this.totalPay - creditAmount;
@@ -56,5 +57,5 @@ public class Calculator {
         {
             recentYearDifference = 0;
         }
-    };
+    }
 }
