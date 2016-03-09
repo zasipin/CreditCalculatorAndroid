@@ -3,7 +3,7 @@ package nz.common.creditcalculator;
 /**
  * Created by Николай on 08.03.2016.
  */
-public class PaymentsCalculator {
+public class PaymentsCalculator implements ICalculator {
     private int monthsInYear = 12;
     private int toPercents = 100;
 
@@ -12,6 +12,8 @@ public class PaymentsCalculator {
     double paymentToPercents = 0;
     double leftToPay = 0;
     double extraPayment = 0;
+    double yearPercents = 0;
+    double creditAmount = 0;
 
     public PaymentsCalculator(int months, double sum, double percents)
     {
@@ -25,9 +27,22 @@ public class PaymentsCalculator {
         this.recalculate(sum, percents, extraPayment);
     }
 
-    public void recalculate(double sum, double percents, double extraPayment){
-        calculator.recalculate(percents / monthsInYear / toPercents, sum);
+    @Override
+    public double getLeftToPay() {
+        return this.leftToPay;
+    }
 
+    @Override
+    public void recalculate(double sum, double percents) {
+        this.recalculate(sum, percents, 0);
+    }
+
+    @Override
+    public void recalculate(double sum, double percents, double extraPayment){
+        calculator.recalculate(percents, sum);
+
+        this.creditAmount = sum;
+        this.yearPercents = percents;
         this.extraPayment = extraPayment;
         this.paymentToPercents = percents * sum / monthsInYear / toPercents;
         this.paymentToCredit = calculator.monthlyPay - this.paymentToPercents;

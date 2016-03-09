@@ -44,12 +44,14 @@ public class MainActivityFragment extends Fragment {
     String PERCENTS = "percents";
 
     int yearsByDefault = 30;
-    MonthsCalculator monthsCalculator;
+    CalculatorsRepository<Calculator> monthsCalculator;
 
     CalculatorListAdapter mCalculatorListAdapter;
 
     public MainActivityFragment() {
-        monthsCalculator = new MonthsCalculator(yearsByDefault);
+        monthsCalculator = new CalculatorsRepository(0);
+        MonthsCalculatorInitializer init = new MonthsCalculatorInitializer(monthsCalculator, yearsByDefault);
+        init.Initialize();
     }
 
     @Override
@@ -283,14 +285,14 @@ public class MainActivityFragment extends Fragment {
     private void updateFromSum(int currentSum)
     {
         creditSum = currentSum;
-        monthsCalculator.Recalculate(creditSum, percentsSum);
+        monthsCalculator.recalculate(creditSum, percentsSum);
         mCalculatorListAdapter.notifyDataSetChanged();
     }
 
     private void updateFromPercents(float currentPercents)
     {
         percentsSum = currentPercents;
-        monthsCalculator.Recalculate(creditSum, percentsSum);
+        monthsCalculator.recalculate(creditSum, percentsSum);
         mCalculatorListAdapter.notifyDataSetChanged();
     }
 
@@ -299,7 +301,7 @@ public class MainActivityFragment extends Fragment {
         if(savedInstanceState != null && savedInstanceState.containsKey(CREDIT_SUM)) {
             creditSum = savedInstanceState.getInt(CREDIT_SUM);
             percentsSum = savedInstanceState.getFloat(PERCENTS);
-            monthsCalculator.Recalculate(creditSum, percentsSum);
+            monthsCalculator.recalculate(creditSum, percentsSum);
         }
     }
 
@@ -330,7 +332,7 @@ public class MainActivityFragment extends Fragment {
             percentsSum = PERCENTS_INIT;
             creditSum = SUM_INIT;
         }
-        monthsCalculator.Recalculate(creditSum, percentsSum);
+        monthsCalculator.recalculate(creditSum, percentsSum);
     }
 
     private void setOnListItemClickListener(ListView lv)
@@ -342,7 +344,9 @@ public class MainActivityFragment extends Fragment {
                 Calculator calculator = mCalculatorListAdapter.getItem(i);
 
                 Intent intent = new Intent(context, PaymentScheduleActivity.class);
-                intent.putExtra(Intent.EXTRA_TEXT, calculator.months);
+                intent.putExtra(IntentExtras.MONTHS, calculator.months);
+                intent.putExtra(IntentExtras.SUM, calculator.creditAmount);
+                intent.putExtra(IntentExtras.PERCENTS, calculator.yearPercents);
                 startActivity(intent);
             }
         });

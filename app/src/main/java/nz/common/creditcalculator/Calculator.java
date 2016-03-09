@@ -3,9 +3,11 @@ package nz.common.creditcalculator;
 /**
  * Created by Nick on 27.07.2015.
  */
-public class Calculator {
+public class Calculator implements ICalculator {
+    private int monthsInYear = 12;
+    private int toPercents = 100;
+
     int months = 0;
-    int monthsInYear = 12;
     double annuitetCoefficient = 0.0;
     double monthlyPay = 0.0;
     double totalPay = 0.0;
@@ -13,6 +15,7 @@ public class Calculator {
     double overpayPercentage = 0.0;
     double recentYearDifference = 0.0;
     double creditAmount = 0.0;
+    double yearPercents = 0.0;
     Calculator recentPeriod;
 
     public Calculator(int _months)
@@ -30,7 +33,19 @@ public class Calculator {
         }
     }
 
-    public void recalculate(double monthlyPercent, double creditAmount){
+    @Override
+    public double getLeftToPay() {
+        return 0;
+    }
+
+    @Override
+    public void recalculate(double sum, double percents, double extraPayment) {
+        this.recalculate(sum, percents, 0);
+    }
+
+    @Override
+    public void recalculate(double yearPercent, double creditAmount){
+        double monthlyPercent = yearPercent / monthsInYear / toPercents;
         double power = Math.pow((1 + monthlyPercent), this.months);
         if(monthlyPercent != 0) {
             this.annuitetCoefficient = monthlyPercent * power / (power - 1);
@@ -38,6 +53,7 @@ public class Calculator {
             this.annuitetCoefficient = 1.0 / months;
         }
         this.creditAmount = creditAmount;
+        this.yearPercents = yearPercent;
         this.monthlyPay = creditAmount * this.annuitetCoefficient;
         this.totalPay = this.monthlyPay * this.months;
         this.overpay = this.totalPay - creditAmount;
@@ -50,7 +66,7 @@ public class Calculator {
 
         if(recentPeriod != null)
         {
-            recentPeriod.recalculate(monthlyPercent, creditAmount);
+            recentPeriod.recalculate(yearPercent, creditAmount);
             recentYearDifference = overpayPercentage - recentPeriod.overpayPercentage;
         }
         else

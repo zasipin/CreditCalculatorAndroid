@@ -28,8 +28,18 @@ public class PaymentsCalculatorArrayAdapter extends ArrayAdapter<PaymentsCalcula
             convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.payment_item, null);
         }
-        TextView sum = (TextView)convertView.findViewById(R.id.tv_PISum);
-        sum.setText(Double.toString(item.calculator.creditAmount));
+        configureTexts(convertView, item);
+
         return convertView;
+    }
+
+    private void configureTexts(View view, PaymentsCalculator item)
+    {
+        TextView sum = (TextView)view.findViewById(R.id.tv_PISum);
+        sum.setText(Double.toString(item.creditAmount));
+//
+//        TextView percents = (TextView)view.findViewById(R.id.tv_payments_percents);
+//        sum.setText(Double.toString(item.yearPercents));
+
     }
 }
