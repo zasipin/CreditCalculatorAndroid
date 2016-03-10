@@ -317,15 +317,14 @@ public class MainActivityFragment extends Fragment {
 
     private void restorePreferences(SharedPreferences prefs)
     {
-        if(prefs != null) {
-            percentsSum = prefs.getFloat(PERCENTS, PERCENTS_INIT);
-            creditSum = prefs.getInt(CREDIT_SUM, SUM_INIT);
-        }
-        else
-        {
+        if(prefs == null) {
             percentsSum = PERCENTS_INIT;
             creditSum = SUM_INIT;
         }
+
+        percentsSum = prefs.getFloat(PERCENTS, PERCENTS_INIT);
+        creditSum = prefs.getInt(CREDIT_SUM, SUM_INIT);
+
         monthsCalculator.Recalculate(creditSum, percentsSum);
     }
 }
