@@ -23,4 +23,19 @@
         <item name="android:shadowColor">#343434</item>
         <item name="android:shadowRadius">10</item>
     </style>
+
+    <style name="smallTextSecondRow">
+        <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
+        <item name="android:textColor">#FF007E66</item>
+    </style>
+
+    <style name="mainTextMainRow">
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="paymentsHeaderText">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:textColor">@color/colorDarkBlueText</item>
+    </style>
 </resources>

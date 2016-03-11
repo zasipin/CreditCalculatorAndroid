@@ -20,9 +20,10 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:rowCount="2"
+            android:rowCount="3"
             android:columnCount="2"
-            android:id="@+id/payments_header_grid">
+            android:id="@+id/payments_header_grid"
+            android:layout_marginTop="-7dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
                 android:id="@+id/tv_payments_sum"
                 android:layout_row="0"
                 android:layout_column="1"
-                android:layout_marginLeft="5dp" />
+                style="@style/paymentsHeaderText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,7 +59,27 @@
                 android:id="@+id/tv_payments_percents"
                 android:layout_column="1"
                 android:layout_row="1"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginLeft="5dp"
+                style="@style/paymentsHeaderText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textView20"
+                android:text="@string/monthsCredit"
+                android:layout_row="2"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/tv_payments_total_months"
+                android:layout_row="2"
+                android:layout_column="1"
+                style="@style/paymentsHeaderText" />
 
         </GridLayout>
     <!--    </FrameLayout>-->
@@ -80,7 +101,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignTop="@+id/payments_header_grid"
-                    android:layout_marginTop="50dp" />
+                    android:layout_marginTop="65dp" />
     <!--            </FrameLayout>-->
 
             </RelativeLayout>
