@@ -324,8 +324,8 @@ public class MainActivityFragment extends Fragment {
     private void restorePreferences(SharedPreferences prefs)
     {
         if(prefs != null) {
-            percentsSum = prefs.getFloat(PERCENTS, 0f);
-            creditSum = prefs.getInt(CREDIT_SUM, 0);
+            percentsSum = prefs.getFloat(PERCENTS, PERCENTS_INIT);
+            creditSum = prefs.getInt(CREDIT_SUM, SUM_INIT);
         }
         else
         {
