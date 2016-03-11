@@ -1,14 +1,13 @@
 package nz.common.creditcalculator;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -67,33 +66,58 @@ public class PaymentsCalculatorArrayAdapter extends ArrayAdapter<PaymentsCalcula
     {
         final PaymentsCalculatorArrayAdapter self = this;
         EditText extraPayment = (EditText) view.findViewById(R.id.et_PIExtraPayment);
-        extraPayment.addTextChangedListener(new TextWatcher() {
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                int currentSum = 0;
-                try {
-                    currentSum = Integer.parseInt(s.toString());
-                    if (currentSum > 0) {
-//                        Toast toast = Toast.makeText(getContext(), "called " + item.leftToPay, Toast.LENGTH_SHORT);
-//                        toast.show();
-                        calculatorsRepository.recalculate(item.creditAmount, item.yearPercents, currentSum, position);
-                        self.notifyDataSetChanged();
-                    }
-                } catch (Exception ex) {
-
+        extraPayment.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    //final int position = v.getId();
+//                    final EditText s = (EditText) v;
+//                    int currentSum = 0;
+//                    try {
+//                        currentSum = Integer.parseInt(s.getText().toString());
+//                        if (currentSum > 0) {
+//                            calculatorsRepository.recalculate(item.creditAmount, item.yearPercents, currentSum, item.getMonths());
+//                        self.notifyDataSetChanged();
+//                        }
+//                    } catch (Exception ex) {
+//
+//                    }
                 }
             }
         });
+
+//        extraPayment.addTextChangedListener(new TextWatcher() {
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                int currentSum = 0;
+//                try {
+//                    currentSum = Integer.parseInt(s.toString());
+//                    if (currentSum > 0) {
+////                        Toast toast = Toast.makeText(getContext(), "called " + item.leftToPay, Toast.LENGTH_SHORT);
+////                        toast.show();
+//                        calculatorsRepository.recalculate(item.creditAmount, item.yearPercents, currentSum, item.getMonths());
+////                        self.notifyDataSetChanged();
+//                    }
+//                } catch (Exception ex) {
+//
+//                }
+//            }
+//        });
+    }
+
+    private void showToast()
+    {
+        Toast.makeText(getContext(), "called ", Toast.LENGTH_SHORT).show();
     }
 }

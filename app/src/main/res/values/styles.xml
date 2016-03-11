@@ -30,7 +30,9 @@
     </style>
 
     <style name="mainTextMainRow">
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+
+        <!--<item name="android:textAppearance">?android:attr/textAppearanceMedium</item>-->
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 

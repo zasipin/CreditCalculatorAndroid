@@ -28,10 +28,18 @@ public class CalculatorsRepository<T extends ICalculator> {
 //        recalculate(sum, percents);
 //    }
 
-    public void recalculate(double sum, double percents, double extraPayment, int extraPaymentCreditId) {
-        if (extraPaymentCreditId >= 0 && extraPaymentCreditId < calculatorsArr.size())
+    public void recalculate(double sum, double percents, double extraPayment, int months) {
+        if (months >= 0 && months < calculatorsArr.size())
         {
-            calculatorsArr.get(extraPaymentCreditId).recalculate(percents, sum, extraPayment);
+            for (T item : calculatorsArr){
+                if (item.getMonths() == months)
+                {
+                    item.recalculate(percents, sum, extraPayment);
+                    break;
+                }
+            }
+
+//            calculatorsArr.get(calculatorsArr.indexOf(item)).recalculate(percents, sum, extraPayment);
         }
         for(int i = 1; i < calculatorsArr.size(); i++)
         {

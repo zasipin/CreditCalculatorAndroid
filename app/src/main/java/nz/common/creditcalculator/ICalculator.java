@@ -7,4 +7,5 @@ public interface ICalculator {
     void recalculate(double percents, double sum, double extraPayment);
     void recalculate(double percents, double sum);
     double getLeftToPay();
+    int getMonths();
 }

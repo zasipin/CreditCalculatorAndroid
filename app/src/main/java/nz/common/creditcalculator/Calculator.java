@@ -34,6 +34,11 @@ public class Calculator implements ICalculator {
     }
 
     @Override
+    public int getMonths() {
+        return this.months;
+    }
+
+    @Override
     public double getLeftToPay() {
         return 0;
     }

@@ -28,6 +28,11 @@ public class PaymentsCalculator implements ICalculator {
     }
 
     @Override
+    public int getMonths() {
+        return this.calculator.getMonths();
+    }
+
+    @Override
     public double getLeftToPay() {
         return this.leftToPay;
     }

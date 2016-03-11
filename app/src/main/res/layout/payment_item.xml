@@ -1,78 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    >
-
     <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|top">
+        android:layout_gravity="left|top"
+        android:id="@+id/tableLayout3">
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="M"
-                android:id="@+id/tv_PIMonth"
-                android:layout_gravity="left"
-                android:width="25dp"
-                android:layout_column="0"
-                style="@style/mainTextMainRow"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_PIPayment"
-                android:layout_column="1"
-                android:layout_marginRight="@dimen/abc_list_item_padding_horizontal_material"
-                android:text="M"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/mainTextMainRow"
-                android:layout_gravity="left" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:id="@+id/tv_PIMonth"
+            android:width="25dp"
+            android:layout_column="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center_vertical"
+            android:layout_gravity="top|left"
+            style="@style/mainTextMainRow" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="M"
-                android:id="@+id/tv_PIForCredit"
-                android:layout_column="2"
-                android:layout_marginRight="@dimen/abc_list_item_padding_horizontal_material"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/mainTextMainRow"
-                android:layout_gravity="left" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_PIPayment"
+            android:layout_column="1"
+            android:text="M"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/mainTextMainRow"
+            android:layout_marginRight="@dimen/right_margin_text"
+            android:gravity="center_vertical"
+            android:layout_gravity="top|left" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="M"
-                android:id="@+id/tv_PIPaymentToPercents"
-                android:layout_column="3"
-                android:layout_marginRight="@dimen/abc_list_item_padding_horizontal_material"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/mainTextMainRow"
-                android:layout_gravity="left" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:id="@+id/tv_PIForCredit"
+            android:layout_column="2"
+            android:layout_marginRight="@dimen/right_margin_text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/mainTextMainRow"
+            android:gravity="center_vertical" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/et_PIExtraPayment"
-                android:layout_column="4"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:maxWidth="80dp"
-                android:maxLines="1"
-                android:layout_gravity="left"
-                android:editable="false" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:id="@+id/tv_PIPaymentToPercents"
+            android:layout_column="3"
+            android:layout_marginRight="@dimen/right_margin_text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/mainTextMainRow"
+            android:layout_gravity="top|left"
+            android:gravity="center_vertical" />
 
-        </TableRow>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/et_PIExtraPayment"
+            android:layout_column="4"
+            android:maxWidth="80dp"
+            android:maxLines="1"
+            android:layout_gravity="left"
+            android:editable="false" />
 
-        <TableRow
+    </TableRow>
+
+    <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -81,10 +86,15 @@
                 android:layout_height="wrap_content"
                 android:text="Medium Text"
                 android:id="@+id/tv_PILeftToPay"
-                android:layout_column="1" />
+                android:layout_column="2"
+                android:layout_span="3" />
 
         </TableRow>
 
-    </TableLayout>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+    </TableRow>
+
+</TableLayout>
