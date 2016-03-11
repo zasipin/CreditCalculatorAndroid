@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +23,7 @@ public class PaymentScheduleActivityFragment extends Fragment {
     private double defaultDouble = 0;
     private double sum;
     private double percents;
-    private double months;
+    private int months;
 
     CalculatorsRepository<PaymentsCalculator> paymentsCalculator;
 
@@ -41,6 +42,8 @@ public class PaymentScheduleActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_payment_schedule, container, false);
 
+        getDataFromIntent();
+
         configureTexts(view);
 
         List<PaymentsCalculator> paymentsList;
@@ -50,7 +53,9 @@ public class PaymentScheduleActivityFragment extends Fragment {
 
         PaymentsCalculatorArrayAdapter adapter = new PaymentsCalculatorArrayAdapter(getContext(),
                                                                                     R.layout.payment_item,
-                                                                                    paymentsList.toArray(new PaymentsCalculator[0]));
+                                                                                    paymentsList.toArray(new PaymentsCalculator[0]),
+                                                                                    months,
+                                                                                    paymentsCalculator);
                                                                                     //CreateFakePayments().toArray(new PaymentsCalculator[0]));
         ListView lv = (ListView)view.findViewById(R.id.lv_payments_schedule);
         lv.setAdapter(adapter);
@@ -60,8 +65,6 @@ public class PaymentScheduleActivityFragment extends Fragment {
 
     private void initializePaymentsCalculator()
     {
-        Intent intent = getActivity().getIntent();
-        int months = intent.getIntExtra(IntentExtras.MONTHS, defaultInt);
         PaymentsCalculatorInitializer init = new PaymentsCalculatorInitializer(paymentsCalculator, months, sum, percents);
         init.Initialize();
     }
@@ -105,16 +108,21 @@ public class PaymentScheduleActivityFragment extends Fragment {
 
     private void configureTexts(View view)
     {
+        TextView tv_sum = (TextView)view.findViewById(R.id.tv_payments_sum);
+        tv_sum.setText(new DecimalFormat("#").format(sum));
+
+        TextView tv_percents = (TextView)view.findViewById(R.id.tv_payments_percents);
+        tv_percents.setText(new DecimalFormat("0.00").format(percents));
+
+        TextView tv_total_months = (TextView)view.findViewById(R.id.tv_payments_total_months);
+        tv_total_months.setText(new DecimalFormat("#").format(months));
+    }
+
+    private void getDataFromIntent()
+    {
         Intent intent = getActivity().getIntent();
         sum = intent.getDoubleExtra(IntentExtras.SUM, defaultDouble);
         percents = intent.getDoubleExtra(IntentExtras.PERCENTS, defaultDouble);
-
-        TextView tv_sum = (TextView)view.findViewById(R.id.tv_payments_sum);
-        tv_sum.setText(Double.toString(sum));
-
-        TextView tv_percents = (TextView)view.findViewById(R.id.tv_payments_percents);
-        tv_percents.setText(Double.toString(percents));
-
+        months = intent.getIntExtra(IntentExtras.MONTHS, defaultInt);
     }
-
 }

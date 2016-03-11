@@ -24,7 +24,7 @@ public class PaymentsCalculator implements ICalculator {
     {
         calculator = new Calculator(months);
         this.extraPayment = extraPayment;
-        this.recalculate(sum, percents, extraPayment);
+        this.recalculate(percents, sum, extraPayment);
     }
 
     @Override
@@ -33,12 +33,12 @@ public class PaymentsCalculator implements ICalculator {
     }
 
     @Override
-    public void recalculate(double sum, double percents) {
-        this.recalculate(sum, percents, 0);
+    public void recalculate(double percents, double sum) {
+        this.recalculate(percents, sum, this.extraPayment);
     }
 
     @Override
-    public void recalculate(double sum, double percents, double extraPayment){
+    public void recalculate(double percents, double sum, double extraPayment){
         calculator.recalculate(percents, sum);
 
         this.creditAmount = sum;

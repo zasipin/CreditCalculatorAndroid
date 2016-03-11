@@ -20,9 +20,16 @@ public class PaymentsCalculatorInitializer {
 
     public void Initialize()
     {
+        double paymentToCredit = 0.0;
+        double creditSum = sum;
+        PaymentsCalculator paymentCalculator;
+
         for (int i = months; i > 0; i--)
         {
-            repository.AddItem(new PaymentsCalculator(i, sum, percents));
+            creditSum = creditSum - paymentToCredit;
+            paymentCalculator = new PaymentsCalculator(i, creditSum, percents);
+            repository.AddItem(paymentCalculator);
+            paymentToCredit = paymentCalculator.paymentToCredit;
         }
     }
 }

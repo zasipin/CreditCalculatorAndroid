@@ -39,8 +39,8 @@ public class Calculator implements ICalculator {
     }
 
     @Override
-    public void recalculate(double sum, double percents, double extraPayment) {
-        this.recalculate(sum, percents, 0);
+    public void recalculate(double percents, double sum, double extraPayment) {
+        this.recalculate(percents, sum);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class CalculatorsRepository<T extends ICalculator> {
     public void recalculate(double sum, double percents, double extraPayment, int extraPaymentCreditId) {
         if (extraPaymentCreditId >= 0 && extraPaymentCreditId < calculatorsArr.size())
         {
-            calculatorsArr.get(extraPaymentCreditId).recalculate(sum, percents, extraPayment);
+            calculatorsArr.get(extraPaymentCreditId).recalculate(percents, sum, extraPayment);
         }
         for(int i = 1; i < calculatorsArr.size(); i++)
         {
