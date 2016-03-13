@@ -19,7 +19,7 @@ public class DialogsBuilder {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
-
+        lp.setMargins(10, 0, 10, 0);
         input.setLayoutParams(lp);
         builder.setView(input);
         builder.setTitle(title);

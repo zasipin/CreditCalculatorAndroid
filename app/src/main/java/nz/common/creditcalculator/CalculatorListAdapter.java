@@ -28,7 +28,7 @@ public class CalculatorListAdapter extends ArrayAdapter<Calculator> {
         if (convertView == null) {
             //LayoutInflater li = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item, null);
+                    .inflate(R.layout.item, parent, false);
         }
         TextView month = (TextView)convertView.findViewById(R.id.textMonth);
         TextView payMonth = (TextView)convertView.findViewById(R.id.textPayMonth);

@@ -29,7 +29,7 @@ public class CalculatorsRepository<T extends ICalculator> {
 //    }
 
     public void recalculate(double sum, double percents, double extraPayment, int months) {
-        if (months >= 0 && months < calculatorsArr.size())
+        if (months > 0 && months <= calculatorsArr.size())
         {
             for (T item : calculatorsArr){
                 if (item.getMonths() == months)

@@ -8,6 +8,7 @@
     <string name="step_plus">+</string>
     <string name="monthsCredit">Срок кредита</string>
     <string name="months">Мес./лет</string>
+    <string name="months_only">Мес.</string>
     <string name="monthlyPayment">Ежемес. платеж</string>
     <string name="wholePayment">Всего оплата</string>
     <string name="overpay">Сумма переплаты</string>
@@ -15,4 +16,9 @@
     <string name="recentYearDelta0">Разница с пред.</string>
     <string name="recentYearDelta">годом, %</string>
     <string name="title_activity_payment_schedule">График платежей</string>
+    <string name="dialog_extraPayment_title">Дополнительный платеж</string>
+    <string name="dialog_extraPayment_message">Введите сумму платежа</string>
+    <string name="payment_for_credit">За кредит</string>
+    <string name="payment_for_percents">За %</string>
+    <string name="payment_extra_payment">Доп. платеж</string>
 </resources>

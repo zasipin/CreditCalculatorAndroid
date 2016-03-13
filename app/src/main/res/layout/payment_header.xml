@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:text="@string/months_only"
+            android:id="@+id/textView21"
+            android:layout_column="0"
+            style="@style/listHeaderMain" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monthlyPayment"
+            android:id="@+id/textView22"
+            android:layout_column="1"
+            style="@style/listHeaderMain" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_for_credit"
+            android:id="@+id/textView23"
+            android:layout_column="2"
+            style="@style/listHeaderMain" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_for_percents"
+            android:id="@+id/textView24"
+            android:layout_column="3"
+            style="@style/listHeaderMain" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_extra_payment"
+            android:id="@+id/textView25"
+            android:layout_column="4"
+            style="@style/listHeaderMain" />
+    </TableRow>
+</TableLayout>

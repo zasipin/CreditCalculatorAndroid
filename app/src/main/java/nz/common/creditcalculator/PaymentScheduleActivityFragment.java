@@ -58,12 +58,14 @@ public class PaymentScheduleActivityFragment extends Fragment {
         paymentsList = paymentsCalculator.GetCalcuatorsList();
 
         mAdapter = new PaymentsCalculatorArrayAdapter(getContext(),
-                                                                                    R.layout.payment_item,
-                                                                                    paymentsList.toArray(new PaymentsCalculator[0]),
-                                                                                    months,
-                                                                                    paymentsCalculator);
+                                                      R.layout.payment_item,
+                                                      paymentsList.toArray(new PaymentsCalculator[0]),
+                                                      months,
+                                                      paymentsCalculator);
                                                                                     //CreateFakePayments().toArray(new PaymentsCalculator[0]));
         ListView lv = (ListView)view.findViewById(R.id.lv_payments_schedule);
+        View listHeader = inflater.inflate(R.layout.payment_header, null);
+        lv.addHeaderView(listHeader);
         lv.setAdapter(mAdapter);
         setListenerForListView(lv);
 
@@ -141,9 +143,10 @@ public class PaymentScheduleActivityFragment extends Fragment {
                 final int localI = i;
                 final EditText editText = new EditText(getContext());
 
-                PaymentsCalculator calc = mAdapter.getItem(i);
-                editText.setText(Double.toString(calc.extraPayment));
+                PaymentsCalculator calc = mAdapter.getItem(i-1);
+                editText.setText(Integer.toString((int)calc.extraPayment));
                 editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
 //                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 //                    @Override
 //                    public void onFocusChange(View view, boolean b) {
@@ -160,18 +163,20 @@ public class PaymentScheduleActivityFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int id) {
                         // get user input and set it to result
                         // edit text
-                        PaymentsCalculator calc = mAdapter.getItem(localI);
+                        PaymentsCalculator calc = mAdapter.getItem(localI-1);
                         paymentsCalculator.recalculate(calc.creditAmount,
                                 calc.yearPercents,
                                 Double.parseDouble(editText.getText().toString())
                                 , calc.getMonths());
-//                        Toast.makeText(getContext(), "done " + Integer.toString(localI), Toast.LENGTH_SHORT);
+                        mAdapter.notifyDataSetChanged();
                     }
                 };
 
-
-//                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT);
-                DialogsBuilder.buildAlertTextDialog(getContext(), "Title", "set some value", okListener, editText);
+                DialogsBuilder.buildAlertTextDialog(getContext(),
+                                                    getString(R.string.dialog_extraPayment_title),
+                                                    getString(R.string.dialog_extraPayment_message),
+                                                    okListener,
+                                                    editText);
             }
         });
     }
