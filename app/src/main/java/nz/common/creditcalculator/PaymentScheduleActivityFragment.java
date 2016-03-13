@@ -1,13 +1,17 @@
 package nz.common.creditcalculator;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -26,6 +30,7 @@ public class PaymentScheduleActivityFragment extends Fragment {
     private int months;
 
     CalculatorsRepository<PaymentsCalculator> paymentsCalculator;
+    PaymentsCalculatorArrayAdapter mAdapter;
 
     public PaymentScheduleActivityFragment() {
         paymentsCalculator = new CalculatorsRepository<>(0);
@@ -51,14 +56,15 @@ public class PaymentScheduleActivityFragment extends Fragment {
         initializePaymentsCalculator();
         paymentsList = paymentsCalculator.GetCalcuatorsList();
 
-        PaymentsCalculatorArrayAdapter adapter = new PaymentsCalculatorArrayAdapter(getContext(),
+        mAdapter = new PaymentsCalculatorArrayAdapter(getContext(),
                                                                                     R.layout.payment_item,
                                                                                     paymentsList.toArray(new PaymentsCalculator[0]),
                                                                                     months,
                                                                                     paymentsCalculator);
                                                                                     //CreateFakePayments().toArray(new PaymentsCalculator[0]));
         ListView lv = (ListView)view.findViewById(R.id.lv_payments_schedule);
-        lv.setAdapter(adapter);
+        lv.setAdapter(mAdapter);
+        setListenerForListView(lv);
 
         return view;
     }
@@ -124,5 +130,67 @@ public class PaymentScheduleActivityFragment extends Fragment {
         sum = intent.getDoubleExtra(IntentExtras.SUM, defaultDouble);
         percents = intent.getDoubleExtra(IntentExtras.PERCENTS, defaultDouble);
         months = intent.getIntExtra(IntentExtras.MONTHS, defaultInt);
+    }
+
+    private void setListenerForListView(ListView lv)
+    {
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, final View view, int i, long l) {
+                final int localI = i;
+                final EditText editText = new EditText(getContext());
+//                if (editText.requestFocus())
+//                {
+//                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+//                }
+                final DialogInterface.OnClickListener okListener = new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // get user input and set it to result
+                        // edit text
+                        //result.setText(userInput.getText());
+
+
+                        PaymentsCalculator calc = mAdapter.getItem(localI);
+                        paymentsCalculator.recalculate(calc.creditAmount,
+                                calc.yearPercents,
+                                Double.parseDouble(editText.getText().toString())
+                                , calc.getMonths());
+//                        Toast.makeText(getContext(), "done " + Integer.toString(localI), Toast.LENGTH_SHORT);
+                    }
+                };
+
+
+//                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT);
+                DialogsBuilder.buildAlertTextDialog(getContext(), "Title", "set some value", okListener, editText);
+            }
+        });
+    }
+
+    class EditDialogListener implements DialogInterface.OnClickListener
+    {
+        EditText mEdit;
+        int i;
+
+        public EditDialogListener(int i)
+        {
+            this.i = i;
+        }
+
+        public void setEdit(EditText edit)
+        {
+            mEdit = edit;
+        }
+
+        @Override
+        public void onClick(DialogInterface dialogInterface, int id) {
+            if(mEdit != null) {
+                PaymentsCalculator calc = mAdapter.getItem(i);
+                paymentsCalculator.recalculate(calc.creditAmount,
+                        calc.yearPercents,
+                        Double.parseDouble(mEdit.getText().toString())
+                        , calc.getMonths());
+                Toast.makeText(getContext(), "done " + Integer.toString(i), Toast.LENGTH_SHORT);
+            }
+        }
     }
 }

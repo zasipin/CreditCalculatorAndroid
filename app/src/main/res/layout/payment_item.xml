@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText" />
+        <!--<EditText-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/editText" />-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,17 +63,17 @@
             android:layout_gravity="top|left"
             android:gravity="center_vertical" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/et_PIExtraPayment"
-            android:layout_column="4"
-            android:maxWidth="80dp"
-            android:maxLines="1"
-            android:layout_gravity="left"
-            android:editable="false" />
+        <!--<EditText-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:inputType="number"-->
+            <!--android:ems="10"-->
+            <!--android:id="@+id/et_PIExtraPayment"-->
+            <!--android:layout_column="4"-->
+            <!--android:maxWidth="80dp"-->
+            <!--android:maxLines="1"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:editable="false" />-->
 
     </TableRow>
 
@@ -91,10 +91,5 @@
 
         </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </TableRow>
 
 </TableLayout>

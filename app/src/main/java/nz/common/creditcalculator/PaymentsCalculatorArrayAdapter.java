@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ public class PaymentsCalculatorArrayAdapter extends ArrayAdapter<PaymentsCalcula
                     .inflate(R.layout.payment_item, null);
         }
         configureTexts(convertView, item);
-        configureEditEvent(convertView, item, position);
+//        configureEditEvent(convertView, item, position);
 
         return convertView;
     }
@@ -65,26 +64,26 @@ public class PaymentsCalculatorArrayAdapter extends ArrayAdapter<PaymentsCalcula
     private void configureEditEvent(View view, final PaymentsCalculator item, final int position)
     {
         final PaymentsCalculatorArrayAdapter self = this;
-        EditText extraPayment = (EditText) view.findViewById(R.id.et_PIExtraPayment);
-
-        extraPayment.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    //final int position = v.getId();
-//                    final EditText s = (EditText) v;
-//                    int currentSum = 0;
-//                    try {
-//                        currentSum = Integer.parseInt(s.getText().toString());
-//                        if (currentSum > 0) {
-//                            calculatorsRepository.recalculate(item.creditAmount, item.yearPercents, currentSum, item.getMonths());
-//                        self.notifyDataSetChanged();
-//                        }
-//                    } catch (Exception ex) {
+//        EditText extraPayment = (EditText) view.findViewById(R.id.et_PIExtraPayment);
 //
-//                    }
-                }
-            }
-        });
+//        extraPayment.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (!hasFocus) {
+//                    //final int position = v.getId();
+////                    final EditText s = (EditText) v;
+////                    int currentSum = 0;
+////                    try {
+////                        currentSum = Integer.parseInt(s.getText().toString());
+////                        if (currentSum > 0) {
+////                            calculatorsRepository.recalculate(item.creditAmount, item.yearPercents, currentSum, item.getMonths());
+////                        self.notifyDataSetChanged();
+////                        }
+////                    } catch (Exception ex) {
+////
+////                    }
+//                }
+//            }
+//        });
 
 //        extraPayment.addTextChangedListener(new TextWatcher() {
 //
