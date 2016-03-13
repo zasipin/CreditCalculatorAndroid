@@ -59,6 +59,9 @@ public class PaymentsCalculatorArrayAdapter extends ArrayAdapter<PaymentsCalcula
 
         TextView leftToPay = (TextView) view.findViewById(R.id.tv_PILeftToPay);
         leftToPay.setText(new DecimalFormat("#").format(item.getLeftToPay()));
+
+        TextView extraPayment = (TextView) view.findViewById(R.id.tv_PIExtraPayment);
+        extraPayment.setText(new DecimalFormat("#").format(item.extraPayment));
     }
 
     private void configureEditEvent(View view, final PaymentsCalculator item, final int position)

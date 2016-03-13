@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,17 +140,26 @@ public class PaymentScheduleActivityFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, final View view, int i, long l) {
                 final int localI = i;
                 final EditText editText = new EditText(getContext());
-//                if (editText.requestFocus())
-//                {
-//                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-//                }
+
+                PaymentsCalculator calc = mAdapter.getItem(i);
+                editText.setText(Double.toString(calc.extraPayment));
+                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+//                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                    @Override
+//                    public void onFocusChange(View view, boolean b) {
+//                        if (b) {
+//                            if (editText.requestFocus()) {
+//                                getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+//                            }
+//                        }
+//                    }
+//                });
+
+
                 final DialogInterface.OnClickListener okListener = new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // get user input and set it to result
                         // edit text
-                        //result.setText(userInput.getText());
-
-
                         PaymentsCalculator calc = mAdapter.getItem(localI);
                         paymentsCalculator.recalculate(calc.creditAmount,
                                 calc.yearPercents,

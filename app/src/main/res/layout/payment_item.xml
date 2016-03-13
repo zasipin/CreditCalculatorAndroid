@@ -63,6 +63,15 @@
             android:layout_gravity="top|left"
             android:gravity="center_vertical" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="M"
+            android:id="@+id/tv_PIExtraPayment"
+            android:layout_column="5"
+            style="@style/mainTextMainRow" />
+
         <!--<EditText-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="match_parent"-->
