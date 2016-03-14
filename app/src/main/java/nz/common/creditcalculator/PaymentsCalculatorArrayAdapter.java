@@ -34,12 +34,10 @@ public class PaymentsCalculatorArrayAdapter extends ArrayAdapter<PaymentsCalcula
 //        return super.getView(position, convertView, parent);
         PaymentsCalculator item = getItem(position);
         if (convertView == null) {
-            //LayoutInflater li = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.payment_item, parent, false);
+                    .inflate(R.layout.payment_item_table, parent, false);
         }
         configureTexts(convertView, item);
-//        configureEditEvent(convertView, item, position);
 
         return convertView;
     }

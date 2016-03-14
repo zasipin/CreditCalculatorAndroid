@@ -1,49 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <TableRow
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/payments_header_list"
+        android:layout_below="@+id/payments_header_grid"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.Small"
-            android:text="@string/months_only"
-            android:id="@+id/textView21"
-            android:layout_column="0"
-            style="@style/listHeaderMain" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                android:text="@string/months_only"
+                android:id="@+id/textView21"
+                android:layout_column="0"
+                style="@style/listHeaderMain"
+                android:layout_weight="1"
+                android:width="32dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/monthlyPayment"
-            android:id="@+id/textView22"
-            android:layout_column="1"
-            style="@style/listHeaderMain" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/monthlyPayment"
+                android:id="@+id/textView22"
+                android:layout_column="1"
+                style="@style/listHeaderMain"
+                android:gravity="right"
+                android:layout_weight="4" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/payment_for_credit"
-            android:id="@+id/textView23"
-            android:layout_column="2"
-            style="@style/listHeaderMain" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_for_credit"
+                android:id="@+id/textView23"
+                android:layout_column="2"
+                style="@style/listHeaderMain"
+                android:gravity="right"
+                android:layout_weight="4" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/payment_for_percents"
-            android:id="@+id/textView24"
-            android:layout_column="3"
-            style="@style/listHeaderMain" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_for_percents"
+                android:id="@+id/textView24"
+                android:layout_column="3"
+                style="@style/listHeaderMain"
+                android:gravity="right"
+                android:layout_weight="4" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/payment_extra_payment"
-            android:id="@+id/textView25"
-            android:layout_column="4"
-            style="@style/listHeaderMain" />
-    </TableRow>
-</TableLayout>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_extra_payment"
+                android:id="@+id/textView25"
+                android:layout_column="4"
+                style="@style/listHeaderMain"
+                android:gravity="right"
+                android:layout_weight="4" />
+        </TableRow>
+    </TableLayout>
+    -->
+</LinearLayout>

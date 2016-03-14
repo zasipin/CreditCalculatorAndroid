@@ -12,11 +12,8 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,6 +26,7 @@ public class PaymentScheduleActivityFragment extends Fragment {
     private double sum;
     private double percents;
     private int months;
+    List<PaymentsCalculator> paymentsList;
 
     CalculatorsRepository<PaymentsCalculator> paymentsCalculator;
     PaymentsCalculatorArrayAdapter mAdapter;
@@ -41,6 +39,14 @@ public class PaymentScheduleActivityFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+        if(months == 0) {
+            getDataFromIntent();
+            initializePaymentsCalculator();
+            if (paymentsList == null) {
+                paymentsList = paymentsCalculator.GetCalcuatorsList();
+            }
+        }
     }
 
     @Override
@@ -48,24 +54,17 @@ public class PaymentScheduleActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_payment_schedule, container, false);
 
-        getDataFromIntent();
-
         configureTexts(view);
 
-        List<PaymentsCalculator> paymentsList;
-
-        initializePaymentsCalculator();
-        paymentsList = paymentsCalculator.GetCalcuatorsList();
-
         mAdapter = new PaymentsCalculatorArrayAdapter(getContext(),
-                                                      R.layout.payment_item,
+                                                      R.layout.payment_item_table,
                                                       paymentsList.toArray(new PaymentsCalculator[0]),
                                                       months,
                                                       paymentsCalculator);
-                                                                                    //CreateFakePayments().toArray(new PaymentsCalculator[0]));
+
         ListView lv = (ListView)view.findViewById(R.id.lv_payments_schedule);
-        View listHeader = inflater.inflate(R.layout.payment_header, null);
-        lv.addHeaderView(listHeader);
+//        View listHeader = inflater.inflate(R.layout.payment_header, null);
+//        lv.addHeaderView(listHeader);
         lv.setAdapter(mAdapter);
         setListenerForListView(lv);
 
@@ -76,43 +75,6 @@ public class PaymentScheduleActivityFragment extends Fragment {
     {
         PaymentsCalculatorInitializer init = new PaymentsCalculatorInitializer(paymentsCalculator, months, sum, percents);
         init.Initialize();
-    }
-
-    private List<PaymentsCalculator> CreateFakePayments()
-    {
-        PaymentsCalculator[] items = {
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 140000, 22),
-                new PaymentsCalculator(60, 170000, 22),
-                new PaymentsCalculator(60, 1500, 22),
-                new PaymentsCalculator(60, 1500, 22),
-                new PaymentsCalculator(60, 1500, 22),
-                new PaymentsCalculator(60, 1500, 22),
-                new PaymentsCalculator(60, 1500, 22),
-                new PaymentsCalculator(60, 100, 22),
-                new PaymentsCalculator(60, 100, 22),
-                new PaymentsCalculator(60, 100, 22),
-                new PaymentsCalculator(60, 100, 22),
-                new PaymentsCalculator(60, 100, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(60, 150000, 22),
-                new PaymentsCalculator(36, 150000, 22)
-
-        };
-
-        List<PaymentsCalculator> all = new ArrayList<PaymentsCalculator>(Arrays.asList(items));
-
-        return all;
     }
 
     private void configureTexts(View view)
@@ -143,27 +105,15 @@ public class PaymentScheduleActivityFragment extends Fragment {
                 final int localI = i;
                 final EditText editText = new EditText(getContext());
 
-                PaymentsCalculator calc = mAdapter.getItem(i-1);
+                PaymentsCalculator calc = mAdapter.getItem(i);
                 editText.setText(Integer.toString((int)calc.extraPayment));
                 editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-//                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//                    @Override
-//                    public void onFocusChange(View view, boolean b) {
-//                        if (b) {
-//                            if (editText.requestFocus()) {
-//                                getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-//                            }
-//                        }
-//                    }
-//                });
-
 
                 final DialogInterface.OnClickListener okListener = new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // get user input and set it to result
                         // edit text
-                        PaymentsCalculator calc = mAdapter.getItem(localI-1);
+                        PaymentsCalculator calc = mAdapter.getItem(localI);
                         paymentsCalculator.recalculate(calc.creditAmount,
                                 calc.yearPercents,
                                 Double.parseDouble(editText.getText().toString())
@@ -179,33 +129,5 @@ public class PaymentScheduleActivityFragment extends Fragment {
                                                     editText);
             }
         });
-    }
-
-    class EditDialogListener implements DialogInterface.OnClickListener
-    {
-        EditText mEdit;
-        int i;
-
-        public EditDialogListener(int i)
-        {
-            this.i = i;
-        }
-
-        public void setEdit(EditText edit)
-        {
-            mEdit = edit;
-        }
-
-        @Override
-        public void onClick(DialogInterface dialogInterface, int id) {
-            if(mEdit != null) {
-                PaymentsCalculator calc = mAdapter.getItem(i);
-                paymentsCalculator.recalculate(calc.creditAmount,
-                        calc.yearPercents,
-                        Double.parseDouble(mEdit.getText().toString())
-                        , calc.getMonths());
-                Toast.makeText(getContext(), "done " + Integer.toString(i), Toast.LENGTH_SHORT);
-            }
-        }
     }
 }

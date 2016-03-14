@@ -11,17 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<EditText-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/editText" />-->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M"
             android:id="@+id/tv_PIMonth"
-            android:width="25dp"
+            android:width="32dp"
             android:layout_column="0"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:gravity="center_vertical"
@@ -36,9 +31,10 @@
             android:text="M"
             android:textAppearance="?android:attr/textAppearanceMedium"
             style="@style/mainTextMainRow"
-            android:layout_marginRight="@dimen/right_margin_text"
-            android:gravity="center_vertical"
-            android:layout_gravity="top|left" />
+            android:layout_gravity="top|left"
+            android:gravity="right"
+            android:width="74dp"
+            android:layout_weight="4" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,10 +42,11 @@
             android:text="M"
             android:id="@+id/tv_PIForCredit"
             android:layout_column="2"
-            android:layout_marginRight="@dimen/right_margin_text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             style="@style/mainTextMainRow"
-            android:gravity="center_vertical" />
+            android:gravity="right"
+            android:width="73dp"
+            android:layout_weight="4" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,11 +54,12 @@
             android:text="M"
             android:id="@+id/tv_PIPaymentToPercents"
             android:layout_column="3"
-            android:layout_marginRight="@dimen/right_margin_text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             style="@style/mainTextMainRow"
             android:layout_gravity="top|left"
-            android:gravity="center_vertical" />
+            android:gravity="right"
+            android:width="73dp"
+            android:layout_weight="4" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,20 +67,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="M"
             android:id="@+id/tv_PIExtraPayment"
-            android:layout_column="5"
-            style="@style/mainTextMainRow" />
+            android:layout_column="4"
+            style="@style/mainTextMainRow"
+            android:gravity="right"
+            android:width="73dp"
+            android:layout_weight="4" />
 
-        <!--<EditText-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:inputType="number"-->
-            <!--android:ems="10"-->
-            <!--android:id="@+id/et_PIExtraPayment"-->
-            <!--android:layout_column="4"-->
-            <!--android:maxWidth="80dp"-->
-            <!--android:maxLines="1"-->
-            <!--android:layout_gravity="left"-->
-            <!--android:editable="false" />-->
+
 
     </TableRow>
 
@@ -96,9 +87,24 @@
                 android:text="Medium Text"
                 android:id="@+id/tv_PILeftToPay"
                 android:layout_column="2"
-                android:layout_span="3" />
+                android:layout_span="2"
+                android:gravity="right"
+                android:layout_gravity="right"
+                android:layout_weight="8"
+                android:width="146dp" />
 
-        </TableRow>
+        <TextView
+            style="@style/mainTextMainRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textView27"
+            android:layout_column="4"
+            android:gravity="right"
+            android:width="73dp"
+            android:layout_weight="4" />
+
+    </TableRow>
 
 
 </TableLayout>

@@ -44,10 +44,11 @@
     <style name="listHeaderMain">
         <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
         <item name="android:textColor">#20093b</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="listHeaderSecond" parent="smallTextSecondRow">
-
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

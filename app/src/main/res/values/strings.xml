@@ -20,5 +20,6 @@
     <string name="payment_for_credit">For loan</string>
     <string name="payment_for_percents">For %</string>
     <string name="payment_extra_payment">Extra payment</string>
+    <string name="payment_to_pay">To pay</string>
 
 </resources>
