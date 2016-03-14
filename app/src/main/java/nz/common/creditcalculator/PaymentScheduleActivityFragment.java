@@ -103,7 +103,11 @@ public class PaymentScheduleActivityFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, final View view, int i, long l) {
                 final int localI = i;
-                final EditText editText = new EditText(getContext());
+
+                View promptsView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_text_editor, null);
+                final EditText editText = (EditText)promptsView.findViewById(R.id.et_dialogUserInput);
+
+                //final EditText editText = new EditText(getContext());
 
                 PaymentsCalculator calc = mAdapter.getItem(i);
                 editText.setText(Integer.toString((int)calc.extraPayment));
@@ -126,7 +130,8 @@ public class PaymentScheduleActivityFragment extends Fragment {
                                                     getString(R.string.dialog_extraPayment_title),
                                                     getString(R.string.dialog_extraPayment_message),
                                                     okListener,
-                                                    editText);
+//                                                    editText);
+                                                    promptsView);
             }
         });
     }
