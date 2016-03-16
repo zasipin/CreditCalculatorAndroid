@@ -8,8 +8,8 @@ android {
         applicationId "nz.common.creditcalculator"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.1.0"
     }
     buildTypes {
         release {
