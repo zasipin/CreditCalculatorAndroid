@@ -11,6 +11,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:measureWithLargestChild="false"
+            android:longClickable="false">
+
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,9 +54,9 @@
                 android:layout_column="1"
 
                 android:textColor="@android:color/black"
-                android:minWidth="90dp"
                 android:gravity="right"
-                android:paddingLeft="5dp" />
+                android:paddingLeft="5dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,17 +66,29 @@
                 android:text="Medium Text"
                 android:id="@+id/textOverpay"
                 android:textColor="@android:color/black"
-                android:minWidth="50dp"
                 android:gravity="right"
-                android:width="90dp"
-                android:paddingLeft="5dp" />
-        </TableRow>
+                android:paddingLeft="5dp"
+                android:layout_weight="1" />
 
-        <TableRow
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textView28"
+                android:width="75dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:measureWithLargestChild="false"
-            android:longClickable="false">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textView29"
+                android:width="70dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,11 +97,11 @@
                 android:id="@+id/textPayTotal"
                 android:layout_column="1"
 
-                android:minWidth="90dp"
                 android:gravity="right"
                 android:paddingLeft="5dp"
                 android:nestedScrollingEnabled="false"
-                style="@style/smallTextSecondRow" />
+                style="@style/smallTextSecondRow"
+                android:layout_weight="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -76,11 +109,11 @@
                 android:text="Medium Text"
                 android:layout_column="2"
                 android:id="@+id/textOverpayPercent"
-                android:minWidth="50dp"
                 android:gravity="right"
                 android:width="90dp"
                 android:paddingLeft="5dp"
-                style="@style/smallTextSecondRow" />
+                style="@style/smallTextSecondRow"
+                android:layout_weight="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +126,8 @@
                 android:paddingLeft="10dp"
                 android:width="75dp"
                 style="@style/smallTextSecondRow" />
-        </TableRow>
-    </TableLayout>
+
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
