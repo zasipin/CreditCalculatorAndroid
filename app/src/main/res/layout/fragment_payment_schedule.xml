@@ -99,7 +99,7 @@
             android:width="32dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/monthlyPayment"
             android:id="@+id/textView22"
@@ -110,7 +110,7 @@
             android:width="74dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/payment_for_credit"
             android:id="@+id/textView23"
@@ -122,11 +122,11 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_column="3"
-            android:layout_gravity="left"
-            android:layout_weight="4">
+            android:layout_weight="4"
+            android:layout_gravity="right">
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -155,7 +155,6 @@
             android:layout_column="4"
             style="@style/listHeaderMain"
             android:gravity="right"
-            android:layout_weight="4"
             android:width="73dp" />
 
 
@@ -166,18 +165,11 @@
 
     <ListView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:id="@+id/lv_payments_schedule"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="false"
+
         android:layout_below="@+id/payments_header_list"
-        android:layout_alignStart="@id/payments_header_list"
-        android:layout_alignLeft="@+id/payments_header_list"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/payments_header_grid"
-        android:layout_marginTop="105dp"/>
+        android:layout_marginTop="5dp" />
 
 
     <!--android:descendantFocusability="beforeDescendants"-->
