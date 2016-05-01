@@ -54,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/textView28"
-                android:width="75dp" />
+                android:width="75dp"
+                android:minWidth="30dp" />
         </LinearLayout>
 
         <LinearLayout
