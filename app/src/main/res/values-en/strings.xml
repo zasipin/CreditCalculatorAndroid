@@ -18,7 +18,7 @@
     <string name="title_activity_payment_schedule">Payment Schedule</string>
     <string name="dialog_extraPayment_title">Extra Payment</string>
     <string name="dialog_extraPayment_message">Set extra payment</string>
-    <string name="payment_for_credit">For loan</string>
+    <string name="payment_for_credit">Principal</string>
     <string name="payment_for_percents">For %</string>
     <string name="payment_extra_payment">Extra payment</string>
     <string name="payment_to_pay">To pay</string>
